@@ -19,6 +19,7 @@ export const GameHands = ({ dealer, player }) => {
                         <p className="handTitle">Dealer's hand ({dealer?.count})</p>
                         <div className="cardsWrapper">
                             {dealer?.cards.map((card, i) => {
+                                console.log(dealer.cards);
                                 return <Card key={i} number={card.number} suit={card.suit} />;
                             })}
                         </div>

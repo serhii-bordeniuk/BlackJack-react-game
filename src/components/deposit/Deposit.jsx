@@ -46,7 +46,7 @@ export const Deposit = ({
                                 }}
                                 className="submitButton"
                             >
-                                Bet
+                                Place your Bet
                             </button>
                         </form>
                     ) : null}

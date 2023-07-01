@@ -54,7 +54,7 @@ function App() {
                 setDealer(dealer);
                 setCurrentBet(null);
                 setGameOver(false);
-                setInformationMessage(null);
+                setInformationMessage("");
             } else {
                 setInformationMessage("Game over! You can start a new game");
             }
@@ -69,7 +69,7 @@ function App() {
             setInputValue("");
             setCurrentBet(null);
             setGameOver(false);
-            setInformationMessage(null);
+            setInformationMessage("");
         }
     }
 
@@ -127,45 +127,49 @@ function App() {
 
     function pass() {
         if (!isGameOver) {
-            const randomCard = getRandomCard(deck);
-            let copyDeck = randomCard.updatedDeck;
-            let copyDealer = dealer;
-            copyDealer.cards.pop();
-            copyDealer.cards.push(randomCard.card);
-            copyDealer.count = cardsCount(copyDealer.cards);
+            if (currentBet) {
+                const randomCard = getRandomCard(deck);
+                let copyDeck = randomCard.updatedDeck;
+                let copyDealer = dealer;
+                copyDealer.cards.pop();
+                copyDealer.cards.push(randomCard.card);
+                copyDealer.count = cardsCount(copyDealer.cards);
 
-            while (copyDealer.count < 17) {
-                const draw = dealerDraw(copyDealer, copyDeck);
-                copyDealer = draw.dealer;
-                copyDeck = draw.updatedDeck;
-            }
-
-            if (copyDealer.count > 21) {
-                setDeck(copyDeck);
-                setDealer(copyDealer);
-                setDeposit((prevDeposit) => prevDeposit + currentBet * 2);
-                setGameOver(true);
-                setInformationMessage("Dealer lost, You win");
-            } else {
-                const winner = getWinner(copyDealer, player);
-                let copyDeposit = deposit;
-                let message;
-
-                if (winner === "dealer") {
-                    message = "Dealer wins";
-                } else if (winner === "player") {
-                    copyDeposit += currentBet * 2;
-                    message = "You win!";
-                } else {
-                    copyDeposit += currentBet;
-                    message = "Push";
+                while (copyDealer.count < 17) {
+                    const draw = dealerDraw(copyDealer, copyDeck);
+                    copyDealer = draw.dealer;
+                    copyDeck = draw.updatedDeck;
                 }
 
-                setDeck(copyDeck);
-                setDealer(copyDealer);
-                setDeposit(copyDeposit);
-                setGameOver(true);
-                setInformationMessage(message);
+                if (copyDealer.count > 21) {
+                    setDeck(copyDeck);
+                    setDealer(copyDealer);
+                    setDeposit((prevDeposit) => prevDeposit + currentBet * 2);
+                    setGameOver(true);
+                    setInformationMessage("Dealer lost, You win");
+                } else {
+                    const winner = getWinner(copyDealer, player);
+                    let copyDeposit = deposit;
+                    let message;
+
+                    if (winner === "dealer") {
+                        message = "Dealer wins";
+                    } else if (winner === "player") {
+                        copyDeposit += currentBet * 2;
+                        message = "You win!";
+                    } else {
+                        copyDeposit += currentBet;
+                        message = "Push";
+                    }
+
+                    setDeck(copyDeck);
+                    setDealer(copyDealer);
+                    setDeposit(copyDeposit);
+                    setGameOver(true);
+                    setInformationMessage(message);
+                }
+            } else {
+                setInformationMessage("Please, place the Bet");
             }
         } else {
             setInformationMessage("Game over! Start a new game");
@@ -188,7 +192,7 @@ function App() {
         const playerCard2 = getRandomCard(dealerCard1.updatedDeck);
         //
         const playerStartHand = [playerCard1.card, playerCard2.card];
-        const dealerStartHand = [dealerCard1.card, {}];
+        const dealerStartHand = [dealerCard1.card];
 
         const player = {
             cards: playerStartHand,
@@ -208,8 +212,7 @@ function App() {
 
     return (
         <div className="app">
-            <AppTitle title="BlackJack" />
-            <GameControlButtons startGame={startGame} hit={hit} pass={pass} />
+            <AppTitle title="BlackJack" informationMessage={informationMessage} />
             <Deposit
                 startGame={startGame}
                 isGameOver={isGameOver}
@@ -221,6 +224,8 @@ function App() {
                 currentBet={currentBet}
                 setCurrentBet={setCurrentBet}
             />
+            <GameControlButtons startGame={startGame} hit={hit} pass={pass} />
+
             <GameHands dealer={dealer} player={player} />
         </div>
     );
