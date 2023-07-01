@@ -111,8 +111,8 @@ const Main = () => {
                         copyDeposit += currentBet * 2;
                         message = "You win!";
                     } else {
-                        copyDeposit += currentBet;
-                        message = "Push";
+                        copyDeposit += parseInt(currentBet);
+                        message = "Tie!";
                     }
 
                     setDeck(copyDeck);

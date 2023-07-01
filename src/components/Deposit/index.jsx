@@ -14,7 +14,7 @@ const Deposit = ({
 }) => {
     function setBet(e) {
         e.preventDefault();
-        const bet = inputValue;
+        const bet = parseInt(inputValue);
         if (bet > deposit) {
             setInformationMessage("Not enough funds to bet");
         } else if (bet % 1 !== 0) {
