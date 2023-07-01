@@ -1,0 +1,27 @@
+.card {
+    background-color: #ffff;
+    border-radius: 10px;
+    width: 80px;
+    height: 150px;
+    color: black;
+    .cardInner {
+        height: 100%;
+        margin: unset;
+        padding: 5px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .cardTitle,
+        .cardTitleBottom {
+            margin: 0;
+        }
+        .cardTitleBottom {
+            text-align: end;
+        }
+    }
+}
+
+.red {
+    color: red;
+}

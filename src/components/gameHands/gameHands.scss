@@ -1,0 +1,23 @@
+.gameHandsInner {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+    .cardsWrapper {
+        margin-top: 15px;
+        display: flex;
+    }
+    .handTitle {
+        font-weight: bold;
+        font-size: 25px;
+    }
+    .cardsWrapper {
+        display: flex;
+        gap: 5px;
+    }
+
+    .playerHand,
+    .dealerHand {
+        min-width: 183px;
+    }
+}

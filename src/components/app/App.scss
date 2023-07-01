@@ -1,0 +1,23 @@
+* {
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+.app {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../../assets/background.jpg);
+    background-size: cover;
+    color: #ffff;
+}
+
+[class*="container"] {
+    max-width: 390px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.appButtons {
+    margin-top: 20px;
+}

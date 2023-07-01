@@ -1,0 +1,35 @@
+.gameControlButtonsInner {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    .button {
+        width: 100px;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+    }
+    .button:hover {
+        background-color: #d5cece;
+    }
+    .startButton {
+        width: 300px;
+    }
+    .buttonsArea {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+        .hitButton {
+            background-color: rgb(124, 241, 124);
+        }
+        .hitButton:hover {
+            background-color: rgb(87, 210, 87);
+        }
+        .passButton {
+            background-color: rgb(247, 121, 121);
+        }
+        .passButton:hover {
+            background-color: rgb(217, 89, 89);
+        }
+    }
+}
