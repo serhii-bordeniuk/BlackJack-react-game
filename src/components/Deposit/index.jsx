@@ -1,7 +1,7 @@
 import React from "react";
-import "./deposit.scss";
+import "./index.scss";
 
-export const Deposit = ({
+const Deposit = ({
     deposit,
     inputValue,
     setInformationMessage,
@@ -16,9 +16,11 @@ export const Deposit = ({
         e.preventDefault();
         const bet = inputValue;
         if (bet > deposit) {
-            setInformationMessage("Not enough items to bet");
+            setInformationMessage("Not enough funds to bet");
         } else if (bet % 1 !== 0) {
             setInformationMessage("Please, type whole numbers only");
+        } else if (bet <= 0) {
+            setInformationMessage("Type the correct number");
         } else {
             const updatedDeposit = deposit - bet;
             setInputValue("");
@@ -66,3 +68,5 @@ export const Deposit = ({
         </div>
     );
 };
+
+export default Deposit;

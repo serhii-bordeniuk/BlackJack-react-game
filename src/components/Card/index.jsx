@@ -1,7 +1,7 @@
 import React from "react";
-import "./card.scss";
+import "./index.scss";
 
-export const Card = ({ number, suit }) => {
+const Card = ({ number, suit }) => {
     const color = suit === "♦" || suit === "♥" ? "card red" : "card";
     const totalValue = number ? `${number}${suit}` : null;
 
@@ -14,3 +14,5 @@ export const Card = ({ number, suit }) => {
         </div>
     );
 };
+
+export default Card;

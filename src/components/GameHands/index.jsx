@@ -1,8 +1,7 @@
-import React from "react";
-import "./gameHands.scss";
-import { Card } from "../card/Card";
+import "./index.scss";
+import { Card } from "../../components";
 
-export const GameHands = ({ dealer, player }) => {
+const GameHands = ({ dealer, player }) => {
     return (
         <div className="gameHands">
             <div className="gameHandscontainer">
@@ -29,3 +28,5 @@ export const GameHands = ({ dealer, player }) => {
         </div>
     );
 };
+
+export default GameHands;

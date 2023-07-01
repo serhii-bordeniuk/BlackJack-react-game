@@ -1,7 +1,7 @@
 import React from "react";
-import "./gameControlButtons.scss";
+import "./index.scss";
 
-export const GameControlButtons = ({ startGame, hit, pass }) => {
+const GameControlButtons = ({ startGame, hit, pass }) => {
     return (
         <div className="gameControlButtonscontainer">
             <div className="gameControlButtonsInner">
@@ -37,3 +37,5 @@ export const GameControlButtons = ({ startGame, hit, pass }) => {
         </div>
     );
 };
+
+export default GameControlButtons;

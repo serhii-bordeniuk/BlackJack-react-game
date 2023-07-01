@@ -1,7 +1,7 @@
 import React from "react";
-import "./appTitle.scss";
+import "./index.scss";
 
-export const AppTitle = ({ title, informationMessage }) => {
+const AppTitle = ({ title, informationMessage }) => {
     return (
         <div className="titlecontainer">
             <div className="appTitle">{title}</div>
@@ -9,3 +9,5 @@ export const AppTitle = ({ title, informationMessage }) => {
         </div>
     );
 };
+
+export default AppTitle;
